@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Lookup</title>
+</head>
+<body>
+    <input id="tag-input" placeholder="Enter asset tag" />
+    <button id="lookup-btn">Look up</button>
+    <div id="result"></div>
+
+    <script>
+        const idArray = [
+    { id: "511168", name: "John", date: "2023", model: "2120" },
+    { id: "511169", name: "Joh", date: "2023", model: "2120" },
+    { id: "511170", name: "Jo", date: "2024", model: "2120" },
+    { id: "511171", name: "J", date: "2024", model: "2120" },
+    { id: "511172", name: "Dan", date: "2024", model: "2120" }
+];
+        const resultDiv = document.getElementById("result");   // top, with the others
+        const lookupBtn = document.getElementById("lookup-btn");
+        const myId = document.getElementById('tag-input')
+        lookupBtn.addEventListener("click", myFun);
+        function myFun(){
+            console.log(myId.value)
+        
+const call = myId.value
+for (const device of idArray) {
+    if (call === device.id) {
+        resultDiv.textContent = `${device.id} — ${device.name} — ${device.model} (${device.date})`;   // hit
+        return;
+    }
+}
+resultDiv.textContent = "Not found in database!";   // miss
+
+        }
+    </script>
+</body>
+</html>
